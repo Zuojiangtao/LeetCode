@@ -34,7 +34,8 @@
 |O(n!)      |<1s    |hangs  |hangs  | hangs | hangs | hangs | hangs
 |O(n^n)     |3-4 min|hangs  |hangs  | hangs | hangs | hangs | hangs
 
-使用图示：  
+使用图示：
+
 ![img.png](img/时间复杂度.png)
 
 其中x轴代表n值，y轴代表T(n)值（时间复杂度）。从图里可以看到：  
