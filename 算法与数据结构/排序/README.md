@@ -48,7 +48,7 @@ const InsertSort = function(nums) {
 }
 ```
 
-#### 选择排序：
+#### 3. 选择排序：
 **_算法思想是：循环将目标元素和后面的除去目标元素的数组做比较查找最小值；将找出的最小值和目标元素交换；重复以上步骤，直到排序完毕。_**
 
 ![选择排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015224719590-1433219824.gif)
@@ -69,7 +69,7 @@ const SelectSort = function(nums) {
 }
 ```
 
-#### 希尔排序：
+#### 4. 希尔排序：
 > 希尔排序其实是插入排序的一种，它是针对直接插入排序算法的改进，该方法又称缩小增量排序。
 
 **_算法思想是：将插入排序分组区间gap执行，对组内元素插入排序，区间逐步缩小，直至gap缩小为1，那么将得到最终结果。就是将数组不断对折执行，直到无法对折，有点类似于二分查找的并行版。_**
@@ -91,5 +91,73 @@ const ShellSort = function(nums) {
         }
     }
     return nums
+}
+```
+
+### O(nlog n)时间复杂度：
+
+#### 5. 归并排序：
+> 归并排序采用分治思想，是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。
+
+**_算法思想是：递归将整个数组分为多个区间，然后每个区间比较排序，最后将各个区间整合。_**
+
+![归并排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015230557043-37375010.gif)
+
+```js
+const MergeSort = function(nums) {
+    let length = nums.length
+    if (length < 2) {
+        return nums
+    }
+    let middle = Math.floor(length/2)
+    //拆分成两个子数组
+    let left =  nums.slice(0, middle)
+    let right = nums.slice(middle, length)
+    //递归拆分
+    let mergeSortLeft = MergeSort(left)
+    let mergeSortRight = MergeSort(right)
+    //合并
+    return merge(mergeSortLeft, mergeSortRight)
+}
+
+const merge = (left, right) => {
+    const result = [];
+
+    while (left.length && right.length) {
+        // 注意: 判断的条件是小于或等于，如果只是小于，那么排序将不稳定.
+        if (left[0] <= right[0]) {
+            result.push(left.shift()); //每次都要删除left或者right的第一个元素，将其加入result中
+        } else {
+            result.push(right.shift());
+        }
+    }
+    //将剩下的元素加上
+    while (left.length) result.push(left.shift());
+
+    while (right.length) result.push(right.shift());
+
+    return result;
+};
+```
+
+#### 6. 快速排序：
+**_算法思想是：将数组找出中间值作为基准值，并定义2个空数组，小于基准值的放到做左边数组，大于基准值的放到右边；然后递归这2个数组，直至数组元素只有1一个；最后返回拼接数组。_**
+
+![快速排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015230936371-1413523412.gif)
+
+```js
+const QuickSort = function(nums) {
+    if (nums.length <= 1) return nums
+    let left = [], right = []
+    let mid = Math.floor(nums.length / 2)
+    let temp = nums.splice(mid, 1)[0]
+    for (let i = 0, length = nums.length; i < length; i++) {
+        if (nums[i] < temp) {
+            left.push(nums[i])
+        } else {
+            right.push(nums[i])
+        }
+    }
+    return QuickSort(left).concat(temp, QuickSort(right))
 }
 ```
