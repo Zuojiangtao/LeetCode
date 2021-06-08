@@ -141,7 +141,7 @@ const merge = (left, right) => {
 ```
 
 #### 6. 快速排序：
-**_算法思想是：将数组找出中间值作为基准值，并定义2个空数组，小于基准值的放到做左边数组，大于基准值的放到右边；然后递归这2个数组，直至数组元素只有1一个；最后返回拼接数组。_**
+**_算法思想是：将数组找出中间值作为基准值，并定义2个空数组，小于基准值的放到做左边数组，大于基准值的放到右边；然后递归这2个数组，直至数组元素只有1个；最后返回拼接数组。_**
 
 ![快速排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015230936371-1413523412.gif)
 
@@ -159,5 +159,181 @@ const QuickSort = function(nums) {
         }
     }
     return QuickSort(left).concat(temp, QuickSort(right))
+}
+```
+
+#### 7. 堆排序：
+> 堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法,堆排序是一种选择排序.
+
+**_算法思想是：将数组转为大顶堆；将堆顶元素和最后一个元素交换，得到新的无序区和有序区；由于交换后的堆顶可能违反堆的性质，因此对无序区调整为新堆，然后再次将堆顶和最后一个元素交换，如此循环直到有序区的元素为n-1._**
+
+![堆排序](https://upload-images.jianshu.io/upload_images/2463290-3664d3fbfb9ed77a.gif?imageMogr2/auto-orient/strip|imageView2/2/w/547/format/webp)
+
+```js
+let len;
+
+// 建立大顶堆
+function buildMaxHeap(arr){
+    len = arr.length;
+    for(let i=Math.floor(len/2); i>=0; i--){
+        heapify(arr,i);
+    }
+}
+// 堆调整
+function heapify(arr,i){
+    const left = 2 * i + 1;
+    const right = 2 * i + 2;
+    let largest = i;
+    if(left<len && arr[left]>arr[largest]){
+        largest = left;
+    }
+    if(right<len && arr[right]>arr[largest]){
+        largest = right;
+    }
+    if(largest != i){
+        swap(arr,i,largest);
+        heapify(arr,largest);
+    }
+}
+// 交换位置
+function swap(arr,i,j){
+    const temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+// 推排序
+function HeapSort(arr){
+    buildMaxHeap(arr);  // 建立大顶堆
+    for(let i=arr.length-1; i>0; i--){
+        swap(arr,0,i);
+        len--;
+        heapify(arr,0);
+    }
+    return arr;
+}
+```
+
+### O(n)时间复杂度：
+
+#### 8. 计数排序：
+> 计数排序不是基于比较的排序算法，其核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。
+
+![计数排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015231740840-6968181.gif)
+
+```js
+function CountingSort (arr, maxValue) {
+    const bucket = new Array(maxValue + 1)
+    let sortedIndex = 0
+    const arrLength = arr.length
+    const bucketLen = maxValue + 1
+    for (let i = 0; i < arrLength; i++) {
+        if (!bucket[arr[i]]) {
+            bucket[arr[i]] = 0
+        }
+        bucket[arr[i]]++
+    }
+    for(let j = 0; j < bucketLen; j++){
+        while(bucket[j] > 0){
+            arr[sortedIndex++] = j
+            bucket[j]--
+        }
+    }
+    return arr
+}
+```
+
+#### 9. 基数排序：
+> 基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。
+
+**_算法思想是：取得数组的最大值并获得其位数；arr为原始数组，从最低位开始取每个位组成radix数组；对radix进行计数排序（利用计数排序适用于小范围数的特点）_**
+
+![基数排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015232453668-1397662527.gif)
+
+```js
+const counter = [];
+
+function RadixSort(arr, maxDigit){
+    let mod = 10
+    let dev = 1
+    for(let i = 0; i < maxDigit; i++, dev*=10, mod*=10){
+        for(let j = 0; j < arr.length; j++){
+            const bucket = parseInt((arr[j] % mod) / dev)
+            if(counter[bucket] == null){
+                counter[bucket] = []
+            }
+            counter[bucket].push(arr[j])
+        }
+        let pos = 0;
+        for(let j = 0; j < counter.length; j++){
+            let value = null
+            if(counter[j] != null){
+                while((value=counter[j].shift()) != null){
+                    arr[pos++] = value
+                }
+            }
+        }
+    }
+    return arr
+}
+```
+
+#### 10. 桶排序：
+> 桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。
+
+**_算法思想是：将数组均匀分布到几个桶里，然后对每个桶里的数据排序，再将各个桶里的数据拼接。至于桶的数量的选择，在小于数组的范围内尽可能的多，保证数据均匀分布到尽可能多的桶里。_**
+
+![桶排序](https://img-blog.csdnimg.cn/20190219081232815.png)
+
+```js
+function BucketSort(arr, bucketSize){  // 桶的数量不能为负
+    if(arr.length === 0){
+        return arr;
+    }
+    let i;
+    let minValue = arr[0];
+    let maxValue = arr[0];
+    for(i = 1; i < arr.length; i++){
+        if(arr[i] < minValue){
+            minValue = arr[i];   // 输出最小的值
+        }else if(arr[i] > maxValue){
+            maxValue = arr[i];   // 输出最大的值
+        }
+    }
+
+    // 桶的初始化
+    const DEFAULT_BUCKET_SIZE = 5;   // 设置桶的默认数量为5，根据数组长度可以调整
+    bucketSize = bucketSize || DEFAULT_BUCKET_SIZE;
+    const bucketCount = Math.floor((maxValue - minValue) / bucketSize) + 1;
+    const buckets = new Array(bucketCount);
+    for(i = 0; i < buckets.length; i++){
+        buckets[i] = [];
+    }
+    // 利用映射函数将数据分配到各个桶中
+    for(let i = 0; i < arr.length; i++){
+        buckets[Math.floor((arr[i] - minValue)/bucketSize)].push(arr[i]);
+    }
+    arr.length = 0;
+    for(i=0; i < buckets.length; i++){
+        insertSort(buckets[i]);  // 对每个桶进行排序，这里使用了插入排序
+        for(let j = 0; j < buckets[i].length; j++){
+            arr.push(buckets[i][j]);
+        }
+    }
+    return arr;
+}
+// 插入排序
+function insertSort(arr){
+    const len = arr.length;
+    let preIndex, current;
+    for(let i = 0; i < len; i++){
+        preIndex = i - 1;
+        current = arr[i];
+        while(preIndex >= 0 && arr[preIndex] > current){
+            arr[preIndex+1] = arr[preIndex];
+            preIndex--;
+        }
+        arr[preIndex+1] = current;
+    }
+    return arr;
 }
 ```
