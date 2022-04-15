@@ -25,28 +25,28 @@
 #### 时间复杂度
 一般情况下，算法中基本操作重复执行的次数是问题规模n的某个函数，用T(n)表示，若有某个辅助函数f(n)，使得当n趋近于无穷大时，T（n)/f(n)的极限值为不等于零的常数，则称f(n)是T(n)的同数量级函数，记作T(n)=O(f(n))，它称为算法的渐进时间复杂度，简称时间复杂度。
 
-|复杂度                |标记符号           |描述|
-|---                  |---               |---
-|常量（Constant）       |O(1)            |操作的数量为常数，与输入的数据的规模无关。n = 1,000,000 -> 1-2 operations
-|对数（Logarithmic）    |O(log2 n)       |操作的数量与输入数据的规模 n 的比例是 log2 (n)。n = 1,000,000 -> 30 operations
-|线性（Linear）	       |O(n)            |操作的数量与输入数据的规模 n 成正比。n = 10,000 -> 5000 operations
-|平方（Quadratic）	   |O(n^2)           |操作的数量与输入数据的规模 n 的比例为二次平方。n = 500 -> 250,000 operations
-|立方（Cubic）	       |O(n3)           |操作的数量与输入数据的规模 n 的比例为三次方。n = 200 -> 8,000,000 operations
-|指数（Exponential）    |O(2n)O(kn)O(n!) |指数级的操作，快速的增长。n = 20 -> 1048576 operations
+| 复杂度             | 标记符号            | 描述                                                           |
+|-----------------|-----------------|--------------------------------------------------------------|
+| 常量（Constant）    | O(1)            | 操作的数量为常数，与输入的数据的规模无关。n = 1,000,000 -> 1-2 operations         |
+| 对数（Logarithmic） | O(log2 n)       | 操作的数量与输入数据的规模 n 的比例是 log2 (n)。n = 1,000,000 -> 30 operations |
+| 线性（Linear）	     | O(n)            | 操作的数量与输入数据的规模 n 成正比。n = 10,000 -> 5000 operations            |
+| 平方（Quadratic）	  | O(n^2)          | 操作的数量与输入数据的规模 n 的比例为二次平方。n = 500 -> 250,000 operations       |
+| 立方（Cubic）	      | O(n3)           | 操作的数量与输入数据的规模 n 的比例为三次方。n = 200 -> 8,000,000 operations      |
+| 指数（Exponential） | O(2n)O(kn)O(n!) | 指数级的操作，快速的增长。n = 20 -> 1048576 operations                    |
 
 而通常时间复杂度与运行时间有一些常见的比例关系：
 
-|复杂度	    |10	    |20	    |50	    |100	|1000	|10000	|100000
-|---        |---    |---    |---    |---    |---    |---    |---
-|O(1)       |<1s    |<1s    |<1s    |<1s    |<1s    |<1s    |<1s
-|O(log2(n)) |<1s    |<1s    |<1s    |<1s    |<1s    |<1s    |<1s
-|O(n)       |<1s    |<1s    |<1s    |<1s    |<1s    |<1s    |<1s
-|O(n*log2(n))|<1s   |<1s    |<1s    |<1s    |<1s    |<1s    |<1s
-|O(n^2)     |<1s    |<1s    |<1s    |<1s    |<1s    |2s     |3-4 min
-|O(n^3)     |<1s    |<1s    |<1s    |<1s    |20s    |5 hours|231 days
-|O(2^n)     |<1s    |<1s    |260days| hangs | hangs | hangs | hangs
-|O(n!)      |<1s    |hangs  |hangs  | hangs | hangs | hangs | hangs
-|O(n^n)     |3-4 min|hangs  |hangs  | hangs | hangs | hangs | hangs
+| 复杂度	         | 10	     | 20	   | 50	     | 100	  | 1000	 | 10000	  | 100000   |
+|--------------|---------|-------|---------|-------|-------|---------|----------|
+| O(1)         | <1s     | <1s   | <1s     | <1s   | <1s   | <1s     | <1s      |
+| O(log2(n))   | <1s     | <1s   | <1s     | <1s   | <1s   | <1s     | <1s      |
+| O(n)         | <1s     | <1s   | <1s     | <1s   | <1s   | <1s     | <1s      |
+| O(n*log2(n)) | <1s     | <1s   | <1s     | <1s   | <1s   | <1s     | <1s      |
+| O(n^2)       | <1s     | <1s   | <1s     | <1s   | <1s   | 2s      | 3-4 min  |
+| O(n^3)       | <1s     | <1s   | <1s     | <1s   | 20s   | 5 hours | 231 days |
+| O(2^n)       | <1s     | <1s   | 260days | hangs | hangs | hangs   | hangs    |
+| O(n!)        | <1s     | hangs | hangs   | hangs | hangs | hangs   | hangs    |
+| O(n^n)       | 3-4 min | hangs | hangs   | hangs | hangs | hangs   | hangs    |
 
 使用图示：
 
