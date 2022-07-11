@@ -3,6 +3,8 @@
 个人LeetCode学习及刷题历程记录
 </div>
 
+[![Travis](https://img.shields.io/badge/language-Java-white.svg)]() [![Travis](https://img.shields.io/badge/language-JavaScript-yellow.svg)]() [![Travis](https://img.shields.io/badge/language-TypeScript-blue.svg)]()
+
 ----
 
 ### 一、前言
