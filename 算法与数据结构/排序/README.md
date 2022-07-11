@@ -4,7 +4,7 @@
 
 根据[算法与数据结构-排序](../README.md)来，按照 _时间复杂度(平均)_ 来对十大排序算法进行总结。
 
-<img src="https://images2018.cnblogs.com/blog/849589/201804/849589-20180402133438219-1946132192.png" alt="算法复杂度图示">
+<img src="../img/排序算法复杂度图示.png" alt="算法复杂度图示">
 
 ### O(n^2)时间复杂度：
 
@@ -101,7 +101,7 @@ const ShellSort = function(nums) {
 
 **_算法思想是：递归将整个数组分为多个区间，然后每个区间比较排序，最后将各个区间整合。_**
 
-![归并排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015230557043-37375010.gif)
+![归并排序](../img/归并排序.gif)
 
 ```js
 const MergeSort = function(nums) {
