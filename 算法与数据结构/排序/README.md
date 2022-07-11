@@ -11,7 +11,7 @@
 #### 1. 冒泡排序：
 **_算法思想是：比较相邻元素，如果前一个比后一个大则交换他们的位置；对每对相邻元素做比较，从开始到结束；重复以上步骤，直到排序完毕。_**
 
-![冒泡排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015223238449-2146169197.gif)
+![冒泡排序](../img/冒泡排序.gif)
 
 ```js
 const BubbleSort = function(nums) {
@@ -30,7 +30,7 @@ const BubbleSort = function(nums) {
 #### 2. 插入排序：
 **_算法思想是：选取后续目标元素与前面的已排序元素队列进行从后向前比对；如果队列中的元素值大于目标元素，那么目标元素位置向前移动；直到找到小于或等于目标元素的值为止，将目标元素插入到找到的这个位置；重复以上步骤，直到排序完毕；_**
 
-![插入排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015225645277-1151100000.gif)
+![插入排序](../img/插入排序.gif)
 
 ```js
 const InsertSort = function(nums) {
@@ -51,7 +51,7 @@ const InsertSort = function(nums) {
 #### 3. 选择排序：
 **_算法思想是：循环将目标元素和后面的除去目标元素的数组做比较查找最小值；将找出的最小值和目标元素交换；重复以上步骤，直到排序完毕。_**
 
-![选择排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015224719590-1433219824.gif)
+![选择排序](../img/选择排序.gif)
 
 ```js
 const SelectSort = function(nums) {
@@ -74,7 +74,7 @@ const SelectSort = function(nums) {
 
 **_算法思想是：将插入排序分组区间gap执行，对组内元素插入排序，区间逐步缩小，直至gap缩小为1，那么将得到最终结果。就是将数组不断对折执行，直到无法对折，有点类似于二分查找的并行版。_**
 
-![希尔排序](https://images2018.cnblogs.com/blog/849589/201803/849589-20180331170017421-364506073.gif)
+![希尔排序](../img/希尔排序.gif)
 
 ```js
 const ShellSort = function(nums) {
@@ -143,7 +143,7 @@ const merge = (left, right) => {
 #### 6. 快速排序：
 **_算法思想是：将数组找出中间值作为基准值，并定义2个空数组，小于基准值的放到做左边数组，大于基准值的放到右边；然后递归这2个数组，直至数组元素只有1个；最后返回拼接数组。_**
 
-![快速排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015230936371-1413523412.gif)
+![快速排序](../img/快速排序.gif)
 
 ```js
 const QuickSort = function(nums) {
@@ -167,7 +167,7 @@ const QuickSort = function(nums) {
 
 **_算法思想是：将数组转为大顶堆；将堆顶元素和最后一个元素交换，得到新的无序区和有序区；由于交换后的堆顶可能违反堆的性质，因此对无序区调整为新堆，然后再次将堆顶和最后一个元素交换，如此循环直到有序区的元素为n-1._**
 
-![堆排序](https://upload-images.jianshu.io/upload_images/2463290-3664d3fbfb9ed77a.gif?imageMogr2/auto-orient/strip|imageView2/2/w/547/format/webp)
+![堆排序](../img/堆排序.gif)
 
 ```js
 let len;
@@ -218,7 +218,7 @@ function HeapSort(arr){
 #### 8. 计数排序：
 > 计数排序不是基于比较的排序算法，其核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。
 
-![计数排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015231740840-6968181.gif)
+![计数排序](../img/计数排序.gif)
 
 ```js
 function CountingSort (arr, maxValue) {
@@ -247,7 +247,7 @@ function CountingSort (arr, maxValue) {
 
 **_算法思想是：取得数组的最大值并获得其位数；arr为原始数组，从最低位开始取每个位组成radix数组；对radix进行计数排序（利用计数排序适用于小范围数的特点）_**
 
-![基数排序](https://images2017.cnblogs.com/blog/849589/201710/849589-20171015232453668-1397662527.gif)
+![基数排序](../img/基数排序.gif)
 
 ```js
 const counter = [];
@@ -282,7 +282,7 @@ function RadixSort(arr, maxDigit){
 
 **_算法思想是：将数组均匀分布到几个桶里，然后对每个桶里的数据排序，再将各个桶里的数据拼接。至于桶的数量的选择，在小于数组的范围内尽可能的多，保证数据均匀分布到尽可能多的桶里。_**
 
-![桶排序](https://img-blog.csdnimg.cn/20190219081232815.png)
+![桶排序](../img/桶排序.png)
 
 ```js
 function BucketSort(arr, bucketSize){  // 桶的数量不能为负
