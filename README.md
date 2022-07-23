@@ -1,6 +1,6 @@
 <h1 align="center">LeetCode</h1>
 
-[![Travis](https://img.shields.io/badge/language-JavaScript-yellow.svg)]() [![Travis](https://img.shields.io/badge/language-TypeScript-blue.svg)]() [![Travis](https://img.shields.io/badge/language-Java-white.svg)]()
+[![Language](https://img.shields.io/badge/language-JavaScript-yellow.svg)]() [![Language](https://img.shields.io/badge/language-TypeScript-blue.svg)]() [![Language](https://img.shields.io/badge/language-Java-white.svg)]()
 
 ----
 
